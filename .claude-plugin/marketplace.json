@@ -1,0 +1,31 @@
+{
+  "name": "memo-api",
+  "owner": {
+    "name": "tjt"
+  },
+  "metadata": {
+    "description": "MaiMemo (墨墨背单词) Open API skill for vocabulary learning",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "memo-api",
+      "source": "./memo-api",
+      "description": "Interact with MaiMemo Open API for vocabulary, interpretations, mnemonics, notepads, phrases, and study data",
+      "version": "1.0.0",
+      "author": {
+        "name": "tjt"
+      },
+      "keywords": [
+        "墨墨",
+        "maimemo",
+        "vocabulary",
+        "study",
+        "flashcard",
+        "spaced-repetition"
+      ],
+      "category": "productivity",
+      "license": "MIT"
+    }
+  ]
+}
