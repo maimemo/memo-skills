@@ -26,7 +26,7 @@ curl -s "https://open.maimemo.com/open/api/v1/phrases?voc_id=VOC_ID" \
     "voc_id": "VOC_ID",
     "phrase": "This is an apple.",
     "interpretation": "这是一个苹果。",
-    "tags": ["日常"],
+    "tags": ["词典"],
     "origin": "自编"
   }
 }
@@ -38,7 +38,7 @@ curl -s "https://open.maimemo.com/open/api/v1/phrases?voc_id=VOC_ID" \
 curl -s -X POST "https://open.maimemo.com/open/api/v1/phrases" \
   -H "Authorization: Bearer $MAIMEMO_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"phrase":{"voc_id":"VOC_ID","phrase":"This is an apple.","interpretation":"这是一个苹果。","tags":["日常"],"origin":"自编"}}'
+  -d '{"phrase":{"voc_id":"VOC_ID","phrase":"This is an apple.","interpretation":"这是一个苹果。","tags":["词典"],"origin":"自编"}}'
 ```
 
 ### POST /phrases/{id} — Update phrase
@@ -49,7 +49,7 @@ curl -s -X POST "https://open.maimemo.com/open/api/v1/phrases" \
   "phrase": {
     "phrase": "I ate an apple.",
     "interpretation": "我吃了一个苹果。",
-    "tags": ["日常"],
+    "tags": ["词典"],
     "origin": "自编"
   }
 }
@@ -60,6 +60,10 @@ curl -s -X POST "https://open.maimemo.com/open/api/v1/phrases" \
 ### DELETE /phrases/{id} — Delete phrase
 
 **Response**: `{ "phrase": Phrase }`
+
+## Valid Tags (multi-select, max 3)
+
+`小学` · `初中` · `高中` · `四级` · `六级` · `专升本` · `专四` · `专八` · `考研` · `考博` · `雅思` · `托福` · `托业` · `新概念` · `GRE` · `GMAT` · `BEC` · `MBA` · `SAT` · `ACT` · `法学` · `医学` · `词典` · `短语`
 
 ## PhraseStatus Enum
 

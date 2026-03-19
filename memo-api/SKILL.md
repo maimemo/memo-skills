@@ -39,7 +39,7 @@ curl -s -X ${METHOD} "${BASE}/${PATH}" \
 |------|-------------------|
 | Look up voc_id / spelling → id | `vocabulary-api.md` |
 | CRUD custom definitions | `interpretations-api.md` |
-| CRUD mnemonics (谐音/词根/联想/拆分/对比) | `notes-api.md` |
+| CRUD mnemonics (联想/谐音/派生/词根/词源/固搭/语法/对比 etc.) | `notes-api.md` |
 | Manage word lists / cloud notepads | `notepads-api.md` |
 | CRUD example sentences | `phrases-api.md` |
 | Study progress, records, schedules | `study-api.md` |

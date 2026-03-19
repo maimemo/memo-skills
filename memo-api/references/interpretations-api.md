@@ -25,7 +25,7 @@ curl -s "https://open.maimemo.com/open/api/v1/interpretations?voc_id=VOC_ID" \
   "interpretation": {
     "voc_id": "VOC_ID",
     "interpretation": "n. 苹果",
-    "tags": ["考研"],
+    "tags": ["简明"],
     "status": "PUBLISHED"
   }
 }
@@ -47,7 +47,7 @@ curl -s -X POST "https://open.maimemo.com/open/api/v1/interpretations" \
 {
   "interpretation": {
     "interpretation": "n. 苹果; 苹果公司",
-    "tags": ["考研"],
+    "tags": ["简明"],
     "status": "PUBLISHED"
   }
 }
@@ -58,6 +58,10 @@ curl -s -X POST "https://open.maimemo.com/open/api/v1/interpretations" \
 ### DELETE /interpretations/{id} — Delete interpretation
 
 No body. No response body.
+
+## Valid Tags (multi-select, max 3)
+
+`简明` · `详细` · `英英` · `小学` · `初中` · `高中` · `四级` · `六级` · `专升本` · `专四` · `专八` · `考研` · `考博` · `雅思` · `托福` · `托业` · `新概念` · `GRE` · `GMAT` · `BEC` · `MBA` · `SAT` · `ACT` · `法学` · `医学`
 
 ## InterpretationStatus Enum
 
