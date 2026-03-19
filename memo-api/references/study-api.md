@@ -176,6 +176,14 @@ curl -s -X POST ".../study/query_study_records" \
   -d '{"next_study_date": {"start": "2026-03-20T00:00:00+08:00", "end": "2026-03-25T00:00:00+08:00"}, "limit": 1000}'
 ```
 
+### 12. Words due on a date
+```bash
+curl -s -X POST ".../study/query_study_records" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"next_study_date": {"end": "2026-03-25T00:00:00+08:00"}, "limit": 1000}'
+```
+
 ## StudyResponse Enum
 
 | Value | Description |
