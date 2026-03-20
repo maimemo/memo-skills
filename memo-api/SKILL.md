@@ -7,6 +7,13 @@ description: >
   学习数据 study progress/review schedule/study records.
   Triggers on: 墨墨, maimemo, 背单词, 释义, 助记, 云词本, 例句, study progress,
   review schedule, words due, forgotten words, study time, export study data.
+metadata:
+  openclaw:
+    requires:
+      env:
+        - MAIMEMO_TOKEN
+      binds:
+        - curl
 ---
 
 # MaiMemo Open API

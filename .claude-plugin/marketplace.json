@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "MaiMemo (墨墨背单词) Open API skill for vocabulary learning",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "plugins": [
     {
       "name": "memo-api",
       "source": "./memo-api",
       "description": "Interact with MaiMemo Open API for vocabulary, interpretations, mnemonics, notepads, phrases, and study data",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "tjt"
       },
