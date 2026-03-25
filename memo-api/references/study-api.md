@@ -72,6 +72,68 @@ curl -s -X POST "https://open.maimemo.com/open/api/v1/study/query_study_records"
   -d '{"as_count": true}'
 ```
 
+### POST /study/add_words — Add words to study plan
+
+Add words to your study plan. Optionally advance them to immediate review.
+
+**Body params**:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `words` | array | yes | List of word objects, max 1000 |
+| `words[].id` | string | yes | Word ID (voc_id), get via vocabulary API |
+| `advance` | boolean | yes | Also advance to immediate review (no level limit) |
+
+**Response**: `{ "added_count": 114 }`
+
+- `added_count`: Number successfully added (may be less than requested due to word limits or already in plan)
+
+```bash
+# Add words without advancing
+curl -s -X POST "https://open.maimemo.com/open/api/v1/study/add_words" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "words": [
+      {"id": "word_id_1"},
+      {"id": "word_id_2"}
+    ],
+    "advance": false
+  }'
+
+# Add and advance immediately
+curl -s -X POST "https://open.maimemo.com/open/api/v1/study/add_words" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "words": [{"id": "word_id_1"}],
+    "advance": true
+  }'
+```
+
+### POST /study/advance_study — Advance words to immediate review
+
+Move words to immediate review (next study date = now). Requires level 10+ to unlock advance review feature.
+
+**Body params**:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `voc_ids` | string[] | yes | Word IDs to advance, max 1000 |
+
+**Response**: `{ "advanced_count": 514 }`
+
+- `advanced_count`: Number successfully advanced (may be less if words not in plan)
+
+```bash
+curl -s -X POST "https://open.maimemo.com/open/api/v1/study/advance_study" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "voc_ids": ["word_id_1", "word_id_2"]
+  }'
+```
+
 ## Usage Scenes
 
 ### 1. Words left today / study time
@@ -182,6 +244,48 @@ curl -s -X POST ".../study/query_study_records" \
   -H "Authorization: Bearer $MAIMEMO_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"next_study_date": {"end": "2026-03-25T00:00:00+08:00"}, "limit": 1000}'
+```
+
+### 13. Add words to study plan
+```bash
+# First lookup word IDs
+curl -s -X POST ".../vocabulary/query" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"spellings": ["apple", "banana"]}'
+
+# Then add them
+curl -s -X POST ".../study/add_words" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "words": [
+      {"id": "voc_id_1"},
+      {"id": "voc_id_2"}
+    ],
+    "advance": false
+  }'
+```
+
+### 14. Add and immediately review words
+```bash
+# Add words and advance them for immediate review (no level limit)
+curl -s -X POST ".../study/add_words" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "words": [{"id": "voc_id_1"}, {"id": "voc_id_2"}],
+    "advance": true
+  }'
+```
+
+### 15. Advance existing words for immediate review
+```bash
+# Advance words already in your plan (requires level 10+)
+curl -s -X POST ".../study/advance_study" \
+  -H "Authorization: Bearer $MAIMEMO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"voc_ids": ["voc_id_1", "voc_id_2"]}'
 ```
 
 ## StudyResponse Enum

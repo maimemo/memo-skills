@@ -87,6 +87,22 @@ Returns: `finished` (done count), `total` (target count), `study_time` (ms)
 | Well-familiar words | `query_study_records` | iterate pages, filter `tags = "WELL_FAMILIAR"` |
 | Export all study data | `query_study_records` | paginate via sliding `next_study_date` window, `limit: 1000` |
 
+### Adding Words
+**Endpoint**: `POST /study/add_words`
+
+| Scene | Endpoint | Key params |
+|-------|----------|-----------|
+| Add words to plan | `add_words` | `words: [{"id": "voc_id"}]`, max 1000 |
+| Add and advance review | `add_words` | `advance: true` (also triggers immediate review, no level limit) |
+
+### Advance Review
+**Endpoint**: `POST /study/advance_study`
+
+| Scene | Endpoint | Key params |
+|-------|----------|-----------|
+| Advance words for immediate review | `advance_study` | `voc_ids: ["voc_id1", ...]`, max 1000 |
+| Requires level 10+ to unlock advance review feature | | |
+
 ## Multi-domain Workflow Hints
 
 - **Add mnemonic to word**: Vocabulary (get voc_id) → Notes (create)
