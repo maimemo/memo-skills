@@ -7,6 +7,7 @@ description: >
   学习数据 study progress/review schedule/study records.
   Triggers on: 墨墨, maimemo, 背单词, 释义, 助记, 云词本, 例句, study progress,
   review schedule, words due, forgotten words, study time, export study data.
+version: "1.2.0"
 metadata:
   openclaw:
     requires:
@@ -21,7 +22,10 @@ metadata:
 ## Auth & Base
 
 - **Base URL**: `https://open.maimemo.com/open/api/v1`
-- **Token**: env var `$MAIMEMO_TOKEN` — set via app (墨墨背单词 → 开放 API)
+- **Token**: env var `$MAIMEMO_TOKEN` — obtain it from either:
+  - App: 墨墨背单词 → 开放 API
+  - Web: open `https://open.maimemo.com/open/api/v1/tokens/openapi`, log in to the MaiMemo account, ask the user to copy the Token and paste it back, then set it as `$MAIMEMO_TOKEN`
+- **Token expiry**: Tokens from the web source are valid for 7 days. If an API call indicates the token is expired/invalid (for example auth failure), tell the user to repeat the web login/copy/paste flow and update `$MAIMEMO_TOKEN`.
 - **Auth header**: `Authorization: Bearer $MAIMEMO_TOKEN`
 
 ```bash
