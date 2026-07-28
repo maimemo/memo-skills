@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "MaiMemo (墨墨背单词) Skills",
-    "version": "1.2.0"
+    "version": "1.3.0"
   },
   "plugins": [
     {
@@ -23,6 +23,24 @@
         "study",
         "flashcard",
         "spaced-repetition"
+      ],
+      "category": "productivity",
+      "license": "MIT"
+    },
+    {
+      "name": "markji-card-syntax",
+      "source": "./markji-card-syntax",
+      "description": "Generate, rewrite, review, and fix Markji card syntax (墨墨记忆卡) content in Chinese for regular users",
+      "version": "1.3.0",
+      "author": {
+        "name": "tjt"
+      },
+      "keywords": [
+        "markji",
+        "墨墨记忆卡",
+        "flashcard",
+        "card-syntax",
+        "memory-card"
       ],
       "category": "productivity",
       "license": "MIT"
